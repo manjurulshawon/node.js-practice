@@ -87,21 +87,50 @@ const myServer =http.createServer((req,res)=>{
             //     res.write('File delete Success');
             //     res.end();
             //   }
-            let error = fs.unlinkSync('dome.txt')
+
+            // ----------------File delete Synchronous--------------------
+    //         let error = fs.unlinkSync('dome.txt')
             
-                if(error){
-                    res.writeHead(200,{'content-type':'text/html'});
-                    res.write('File Delete fail');
-                    res.end();
-            }
-            else{
-                res.writeHead(200,{'content-type':'text/html'});
-                res.write('File delete Success');
-                res.end();
-              }
+    //             if(error){
+    //                 res.writeHead(200,{'content-type':'text/html'});
+    //                 res.write('File Delete fail');
+    //                 res.end();
+    //         }
+    //         else{
+    //             res.writeHead(200,{'content-type':'text/html'});
+    //             res.write('File delete Success');
+    //             res.end();
+    //           }
+    // }
+    //--------------------------fs file exists Sync----------------
+
+        
+        // let result = fs.existsSync('demoNewNew.txt')
+        // if(result){
+        //     res.end("True");
+        // }
+        // else{
+        //     res.end("flase");
+        // }
+     // ----------------------------------Fs File Exists Aych   -----------------
+
+    fs.exists('demoNewNew.txt',(result)=>{
+    if(result){
+        res.end("File exisits");
+    }
+    else{
+        res.end("File does not exists");
+    }
+    })
+
+    
+
+
+
     }
 
-            });
+});
+
 
             
 
