@@ -76,20 +76,35 @@ const myServer =http.createServer((req,res)=>{
 
             //   ---------------------------File Deleted Async-----------
 
-            fs.unlink('demo.txt',(error)=>{
-             if(error){
-                res.writeHead(200,{'content-type':'text/html'});
-                res.write('File Delete fail');
-                res.end();
-             }
-             else{
+            // fs.unlink('demo.txt',(error)=>{
+            //  if(error){
+            //     res.writeHead(200,{'content-type':'text/html'});
+            //     res.write('File Delete fail');
+            //     res.end();
+            //  }
+            //  else{
+            //     res.writeHead(200,{'content-type':'text/html'});
+            //     res.write('File delete Success');
+            //     res.end();
+            //   }
+            let error = fs.unlinkSync('dome.txt')
+            
+                if(error){
+                    res.writeHead(200,{'content-type':'text/html'});
+                    res.write('File Delete fail');
+                    res.end();
+            }
+            else{
                 res.writeHead(200,{'content-type':'text/html'});
                 res.write('File delete Success');
                 res.end();
               }
-            });
     }
-});
+
+            });
+
+            
+
     myServer.listen(5000,()=>{
         console.log("Server Running....");
     });
